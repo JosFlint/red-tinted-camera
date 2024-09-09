@@ -32,13 +32,21 @@ document.addEventListener('DOMContentLoaded', () => {
         offScreenCtx.filter = 'sepia(1) saturate(70) hue-rotate(-25deg) brightness(0.7) contrast(0.7)'; // Adjusted filter values
         offScreenCtx.drawImage(offScreenCanvas, 0, 0, offScreenCanvas.width, offScreenCanvas.height);
 
+        // Add text watermark to the canvas
+        offScreenCtx.font = '30px Arial'; // Font size and family
+        offScreenCtx.fillStyle = 'white'; // Text color
+        offScreenCtx.textAlign = 'center'; // Center-align the text
+        offScreenCtx.textBaseline = 'bottom'; // Align text to the bottom of the canvas
+        const title = 'RE-VIEWING THE GAZE by Jo Flint';
+        offScreenCtx.fillText(title, offScreenCanvas.width / 2, offScreenCanvas.height - 20); // Draw text on the canvas
+       
         // Convert canvas content to data URL
         const dataURL = offScreenCanvas.toDataURL('image/png');
 
         // Create a download link for the captured photo
         const link = document.createElement('a');
         link.href = dataURL;
-        link.download = 'captured-photo.png'; // Name of the file
+        link.download = 'RE-VIEWING_THE_GAZE_by_Jo_Flint.png'; // Name of the file
         link.click(); // Trigger the download
     });
 
