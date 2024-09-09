@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         offScreenCtx.drawImage(video, 0, 0, offScreenCanvas.width, offScreenCanvas.height);
 
         // Apply brightness and contrast to the canvas
-        offScreenCtx.filter = 'sepia(1) saturate(70) hue-rotate(-25deg) brightness(1.0) contrast(.07)'; // Adjusted filter values
+        offScreenCtx.filter = 'sepia(1) saturate(70) hue-rotate(-25deg) brightness(1.0) contrast(0.7)'; // Adjusted filter values
         offScreenCtx.drawImage(offScreenCanvas, 0, 0, offScreenCanvas.width, offScreenCanvas.height);
 
         // Convert canvas content to data URL
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Apply filter to live video feed
     function applyFilter() {
-        video.style.filter = 'sepia(1) saturate(70) hue-rotate(-25deg) brightness(1.0) contrast(.07)'; // Adjusted filter values
+        video.style.filter = 'sepia(1) saturate(70) hue-rotate(-25deg) brightness(1.0) contrast(0.7)'; // Adjusted filter values
     }
 
     // Call applyFilter function on video play
