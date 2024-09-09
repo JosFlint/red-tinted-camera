@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         offScreenCtx.drawImage(video, 0, 0, offScreenCanvas.width, offScreenCanvas.height);
 
         // Apply brightness and contrast to the canvas
-        offScreenCtx.filter = 'brightness(1.5) contrast(1.2)'; // Adjusted filter values
+        offScreenCtx.filter = 'sepia(1) saturate(70) hue-rotate(-25deg) brightness(1.0) contrast(.07)'; // Adjusted filter values
         offScreenCtx.drawImage(offScreenCanvas, 0, 0, offScreenCanvas.width, offScreenCanvas.height);
 
         // Convert canvas content to data URL
