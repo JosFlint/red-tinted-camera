@@ -2,12 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const video = document.getElementById('video');
     const captureButton = document.getElementById('capture');
 
-    // Access the user's camera with 1080p resolution
+    // Access the user's camera with 1080p resolution and autofocus
     navigator.mediaDevices.getUserMedia({
         video: {
-            facingMode: { ideal: 'environment' },
-            width: { ideal: 1920 },
-            height: { ideal: 1080 }
+            facingMode: { ideal: 'environment' }, // Prefer rear camera
+            width: { ideal: 3840 },
+            height: { ideal: 2160 },
+            focusMode: 'auto' // Request autofocus
         }
     })
     .then(stream => {
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         offScreenCtx.drawImage(video, 0, 0, offScreenCanvas.width, offScreenCanvas.height);
 
         // Apply brightness and contrast to the canvas
-        offScreenCtx.filter = 'sepia(1) saturate(70) hue-rotate(-25deg) brightness(1.2) contrast(0.7)'; // Adjusted filter values
+        offScreenCtx.filter = 'sepia(1) saturate(5) hue-rotate(-95deg) brightness(0,9) contrast(2.5)'; // Adjusted filter values
         offScreenCtx.drawImage(offScreenCanvas, 0, 0, offScreenCanvas.width, offScreenCanvas.height);
 
         // Add text watermark to the canvas
@@ -39,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         offScreenCtx.textBaseline = 'bottom'; // Align text to the bottom of the canvas
         const title = 'RE-VIEWING THE GAZE by Jo Flint';
         offScreenCtx.fillText(title, offScreenCanvas.width / 2, offScreenCanvas.height - 20); // Draw text on the canvas
-       
+
         // Convert canvas content to data URL
         const dataURL = offScreenCanvas.toDataURL('image/png');
 
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Apply filter to live video feed
     function applyFilter() {
-        video.style.filter = 'sepia(1) saturate(70) hue-rotate(-25deg) brightness(1.2) contrast(0.7)'; // Adjusted filter values
+        video.style.filter = 'sepia(1) saturate(5) hue-rotate(-95deg) brightness(0.9) contrast(2.5)'; // Adjusted filter values
     }
 
     // Call applyFilter function on video play
